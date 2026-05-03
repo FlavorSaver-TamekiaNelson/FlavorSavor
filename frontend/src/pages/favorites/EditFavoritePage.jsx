@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001'
 export default function EditFavoritePage() {
   const { id } = useParams()
   const navigate = useNavigate()
@@ -17,7 +17,7 @@ export default function EditFavoritePage() {
   useEffect(() => {
     const loadFavorite = async () => {
       try {
-        const res = await fetch(`http://localhost:5001/api/favorites/${id}`)
+        const res = await fetch(`${API_URL}/api/favorites/${id}`)
         const data = await res.json()
 
         if (!res.ok) throw new Error(data.error)
@@ -47,7 +47,7 @@ export default function EditFavoritePage() {
     e.preventDefault()
 
     try {
-      const res = await fetch(`http://localhost:5001/api/favorites/${id}`, {
+      const res = await fetch(`${API_URL}/api/favorites/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

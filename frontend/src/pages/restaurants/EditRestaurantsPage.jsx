@@ -5,6 +5,8 @@ import PageContainer from '@/components/layout/PageContainer'
 import Input from '@/components/ui/Input'
 import Button from '@/components/ui/Button'
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001'
+
 export default function EditRestaurantPage() {
   const { id } = useParams()
   const navigate = useNavigate()
@@ -20,7 +22,7 @@ export default function EditRestaurantPage() {
   useEffect(() => {
     const loadRestaurant = async () => {
       try {
-        const res = await fetch(`http://localhost:5001/api/restaurants/${id}`)
+        const res = await fetch(`${API_URL}/api/restaurants/${id}`)
         const data = await res.json()
 
         if (!res.ok) throw new Error(data.error || 'Failed to load restaurant')
@@ -49,7 +51,7 @@ export default function EditRestaurantPage() {
     e.preventDefault()
 
     try {
-      const res = await fetch(`http://localhost:5001/api/restaurants/${id}`, {
+      const res = await fetch(`${API_URL}/api/restaurants/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form)

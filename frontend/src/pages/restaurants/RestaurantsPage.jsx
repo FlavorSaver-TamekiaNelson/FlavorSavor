@@ -2,6 +2,8 @@ import { useEffect, useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import PageContainer from '@/components/layout/PageContainer'
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001'
+
 export default function RestaurantsPage() {
     const [items, setItems] = useState([])
 
@@ -11,7 +13,7 @@ export default function RestaurantsPage() {
 
     useEffect(() => {
         const load = async () => {
-            const res = await fetch('http://localhost:5001/api/restaurants')
+            const res = await fetch(`${API_URL}/api/restaurants`)
             const data = await res.json()
             setItems(data)
         }

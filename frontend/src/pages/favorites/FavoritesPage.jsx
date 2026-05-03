@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import PageContainer from '@/components/layout/PageContainer'
 import StarRating from '@/components/ui/StarRating'
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001'
+
 export default function FavoritesPage() {
     const [items, setItems] = useState([])
     const [search, setSearch] = useState('')
@@ -11,7 +13,7 @@ export default function FavoritesPage() {
     const [selectedTags, setSelectedTags] = useState([])
     const loadFavorites = async () => {
         try {
-            const res = await fetch('http://localhost:5001/api/favorites/details/all')
+            const res = await fetch(`${API_URL}/api/favorites/details/all`)
             const data = await res.json()
 
             if (!res.ok) throw new Error(data.error || 'Failed to load')
@@ -26,7 +28,6 @@ export default function FavoritesPage() {
         loadFavorites()
     }, [])
 
-    // 🆕 TOGGLE TAG
     const toggleTag = (tag) => {
         setSelectedTags(prev =>
             prev.includes(tag)
@@ -85,7 +86,7 @@ export default function FavoritesPage() {
 
     const handleDelete = async (id) => {
         try {
-            const res = await fetch(`http://localhost:5001/api/favorites/${id}`, {
+            const res = await fetch(`${API_URL}/api/favorites/${id}`, {
                 method: 'DELETE'
             })
 
@@ -102,7 +103,6 @@ export default function FavoritesPage() {
 
             <h1>Favorites</h1>
 
-            {/* TOOLBAR */}
             <div className="toolbar">
 
                 <input
