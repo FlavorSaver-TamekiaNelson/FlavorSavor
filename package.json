@@ -4,12 +4,12 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"No tests yet\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "FlavorSaver a web app designed to help people track and remember their favorite foods and drinks. Users can quickly log something they enjoyed—like a coffee, cocktail, dessert, or meal—and add details such as the restaurant, a rating, notes, and even a photo.",
+  "description": "FlavorSavor a web app designed to help people track and remember their favorite foods and drinks. Users can quickly log something they enjoyed—like a coffee, cocktail, dessert, or meal—and add details such as the restaurant, a rating, notes, and even a photo.",
   "dependencies": {
     "axios": "^1.15.2",
     "cors": "^2.8.6",
@@ -22,10 +22,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FlavorSaver-TamekiaNelson/FlavorSaver.git"
+    "url": "git+https://github.com/FlavorSaver-TamekiaNelson/FlavorSavor.git"
   },
   "bugs": {
-    "url": "https://github.com/FlavorSaver-TamekiaNelson/FlavorSaver/issues"
+    "url": "https://github.com/FlavorSaver-TamekiaNelson/FlavorSavor/issues"
   },
-  "homepage": "https://github.com/FlavorSaver-TamekiaNelson/FlavorSaver#readme"
+  "homepage": "https://github.com/FlavorSaver-TamekiaNelson/FlavorSavor#readme"
 }
