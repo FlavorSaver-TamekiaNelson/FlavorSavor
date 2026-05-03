@@ -10,7 +10,7 @@ import userRoutes from './routes/userRoutes.js';
 import pool from './db.js';
 
 pool.query('SELECT NOW()')
-  .then(res => console.log('✅ DB CONNECTED:', res.rows[0]))
+  .then(res => console.log('DB CONNECTED:', res.rows[0]))
   .catch(err => console.error('DB CONNECTION FAILED:', err));
 
 const app = express();
@@ -34,13 +34,10 @@ app.use('/api/restaurants', restaurantRoutes);
 app.use('/api/favorites', favoriteRoutes);
 app.use('/api/users', userRoutes);
 
-const PORT = process.env.PORT || 5001;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
 app.get('/', (req, res) => {
   res.send('Flavor Savor API is running');
 });
 
-setInterval(() => {
-  console.log('server alive...');
-}, 10000);
+const PORT = process.env.PORT || 5001;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
