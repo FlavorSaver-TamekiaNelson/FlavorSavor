@@ -49,7 +49,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'flavorsavor-api'
+          app-name: flavorsavor-api-hudbbdgzbpajcwf3
           slot-name: 'Production'
           package: .
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_823F11B19A6F4C109618D6A30D3F5129 }}
