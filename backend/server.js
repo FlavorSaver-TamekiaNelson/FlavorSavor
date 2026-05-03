@@ -16,7 +16,10 @@ pool.query('SELECT NOW()')
 const app = express();
 
 app.use(cors({
-    origin: 'http://localhost:5174',
+    origin: [
+  'http://localhost:5174',
+  'https://salmon-water-073aac80f.7.azurestaticapps.net'
+],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
@@ -33,6 +36,10 @@ app.use('/api/users', userRoutes);
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+app.get('/', (req, res) => {
+  res.send('Flavor Savor API is running');
+});
 
 setInterval(() => {
   console.log('server alive...');
