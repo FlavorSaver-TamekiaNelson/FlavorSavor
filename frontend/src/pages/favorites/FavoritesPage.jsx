@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom'
 import PageContainer from '@/components/layout/PageContainer'
 import StarRating from '@/components/ui/StarRating'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001'
+const API_URL =
+    import.meta.env.VITE_API_URL ||
+    'https://flavorsavor-api-hudbbdgzbpajcwf3.centralus-01.azurewebsites.net'
 
 export default function FavoritesPage() {
     const [items, setItems] = useState([])

@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react'
 import PageContainer from '@/components/layout/PageContainer'
 
+const API_URL =
+    import.meta.env.VITE_API_URL ||
+    'https://flavorsavor-api-hudbbdgzbpajcwf3.centralus-01.azurewebsites.net'
+
 export default function UsersPage() {
     const [users, setUsers] = useState([])
 
     useEffect(() => {
         const load = async () => {
-            const res = await fetch('{API_URL}/api/users')
+            const res = await fetch(`${API_URL}/api/users`)
             const data = await res.json()
             setUsers(data)
         }

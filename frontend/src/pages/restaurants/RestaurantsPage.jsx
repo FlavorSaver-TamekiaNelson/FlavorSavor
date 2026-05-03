@@ -2,7 +2,7 @@ import { useEffect, useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import PageContainer from '@/components/layout/PageContainer'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001'
+const API_URL = import.meta.env.VITE_API_URL || 'https://flavorsavor-api-hudbbdgzbpajcwf3.centralus-01.azurewebsites.net'
 
 export default function RestaurantsPage() {
     const [items, setItems] = useState([])
@@ -52,8 +52,8 @@ export default function RestaurantsPage() {
     }, [items, search, sort, cuisine])
 
     const handleDelete = async (id) => {
-        await fetch(`http://localhost:5001/api/restaurants/${id}`, {
-            method: 'DELETE'
+        await fetch(`${API_URL}/api/restaurants/${id}`, {
+        method: 'DELETE'
         })
 
         setItems(prev => prev.filter(r => r.id !== id))

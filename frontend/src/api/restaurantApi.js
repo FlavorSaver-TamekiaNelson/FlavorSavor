@@ -1,8 +1,10 @@
 import axios from 'axios'
 
-const API_URL = import.meta.env.VITE_API_URL
-    ? `${import.meta.env.VITE_API_URL}/api/restaurants`
-    : 'http://localhost:5001/api/restaurants'
+const BASE_URL =
+    import.meta.env.VITE_API_URL ||
+    'https://flavorsavor-api-hudbbdgzbpajcwf3.centralus-01.azurewebsites.net'
+
+const API_URL = `${BASE_URL}/api/restaurants`
 
 export const getRestaurants = () => axios.get(API_URL)
 export const getRestaurant = id => axios.get(`${API_URL}/${id}`)

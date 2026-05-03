@@ -5,7 +5,7 @@ import PageContainer from '@/components/layout/PageContainer'
 import Input from '@/components/ui/Input'
 import Button from '@/components/ui/Button'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001'
+const API_URL = import.meta.env.VITE_API_URL || 'https://flavorsavor-api-hudbbdgzbpajcwf3.centralus-01.azurewebsites.net'
 
 export default function EditRestaurantPage() {
   const { id } = useParams()
