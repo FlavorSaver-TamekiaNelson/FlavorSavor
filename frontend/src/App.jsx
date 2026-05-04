@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from './components/layout/NavBar.jsx';
-import ProtectedRoute from './auth/ProtectedRoute.jsx';
+import ProtectedRoute from './pages/auth/ProtectedRoute.jsx';
 import RestaurantsPage from './pages/restaurants/RestaurantsPage.jsx';
 import AddRestaurantsPage from './pages/restaurants/AddRestaurantsPage.jsx';
 import EditRestaurantsPage from './pages/restaurants/EditRestaurantsPage.jsx';
