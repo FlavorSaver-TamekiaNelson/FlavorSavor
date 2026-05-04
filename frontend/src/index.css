@@ -5,8 +5,8 @@
 body {
     margin: 0;
     font-family: system-ui, -apple-system, sans-serif;
-    background: #f6f7fb;
-    color: #111;
+    background: #fdf6f0;
+    color: #1a1a1a;
 }
 
 .page-container {
@@ -18,34 +18,38 @@ body {
 h1 {
     font-size: 24px;
     margin-bottom: 16px;
+    color: #c0392b;
 }
 
 .toolbar {
     display: grid;
     grid-template-columns: 1fr 160px 1fr auto;
     gap: 10px;
-
     padding: 12px;
     margin-bottom: 16px;
-
     background: #fff;
-    border: 1px solid #111;
+    border: 1px solid #e8d5c4;
     border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
 .input {
     width: 100%;
     padding: 10px;
     border-radius: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #e8d5c4;
     background: white;
     outline: none;
+}
+
+.input:focus {
+    border-color: #c0392b;
 }
 
 .btn {
     padding: 10px 14px;
     border-radius: 10px;
-    background: #111;
+    background: #c0392b;
     color: white;
     text-decoration: none;
     display: inline-flex;
@@ -53,6 +57,12 @@ h1 {
     justify-content: center;
     border: none;
     cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.btn:hover {
+    background: #a93226;
 }
 
 .grid {
@@ -62,17 +72,27 @@ h1 {
 
 .card {
     background: white;
-    border: 1px solid #eee;
+    border: 1px solid #f0e0d0;
     border-radius: 12px;
-    padding: 14px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(192, 57, 43, 0.06);
+    transition: box-shadow 0.2s;
+}
+
+.card:hover {
+    box-shadow: 0 4px 16px rgba(192, 57, 43, 0.12);
 }
 
 a {
-    color: #111;
+    color: #c0392b;
+}
+
+a:hover {
+    color: #a93226;
 }
 
 .error {
-    color: red;
+    color: #c0392b;
     margin-bottom: 10px;
 }
 
@@ -86,10 +106,15 @@ a {
 .tag {
     padding: 5px 10px;
     border-radius: 999px;
-    border: 1px solid #ddd;
-    background: #f7f7f7;
+    border: 1px solid #e8d5c4;
+    background: #fdf6f0;
     font-size: 12px;
     cursor: pointer;
+    transition: background 0.2s;
+}
+
+.tag:hover {
+    background: #f5e6d8;
 }
 
 .tag.small {
@@ -99,20 +124,22 @@ a {
 }
 
 .tag.active {
-    background: #111;
+    background: #c0392b;
     color: white;
-    border-color: #111;
+    border-color: #c0392b;
 }
 
 .tag.clear {
     background: transparent;
-    border: 1px dashed #999;
+    border: 1px dashed #c0392b;
+    color: #c0392b;
 }
 
 .stars {
     display: flex;
     gap: 4px;
     align-items: center;
+    margin-top: 4px;
 }
 
 .star {
@@ -135,7 +162,7 @@ a {
 }
 
 .star.filled {
-    background: #111;
+    background: #e67e22;
 }
 
 .navbar {
@@ -143,19 +170,26 @@ a {
     justify-content: space-between;
     align-items: center;
     padding: 14px 24px;
-    background: #fff;
-    border-bottom: 1px solid #111;
+    background: #c0392b;
+    border-bottom: none;
 }
 
 .navbar a {
     margin-right: 12px;
     text-decoration: none;
-    color: #111;
+    color: white;
     font-weight: 500;
 }
 
 .navbar a:hover {
-    opacity: 0.7;
+    opacity: 0.8;
+}
+
+.logo-link h2 {
+    color: white;
+    margin: 0;
+    font-size: 20px;
+    letter-spacing: 0.5px;
 }
 
 .navbar-left,
@@ -163,4 +197,19 @@ a {
     display: flex;
     align-items: center;
     gap: 12px;
+}
+
+.btn-logout {
+    padding: 8px 14px;
+    border-radius: 10px;
+    background: white;
+    color: #c0392b;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.btn-logout:hover {
+    background: #f5e6d8;
 }
