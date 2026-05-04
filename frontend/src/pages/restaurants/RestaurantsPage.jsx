@@ -80,7 +80,7 @@ export default function RestaurantsPage() {
                 >
                     <option value="all">All cuisines</option>
                     <option value="Italian">Italian</option>
-                    <option value="Asian">Chinese</option>
+                    <option value="Asian">Asian</option>
                     <option value="Mexican">Mexican</option>
                     <option value="French">French</option>
                     <option value="American">American</option>
