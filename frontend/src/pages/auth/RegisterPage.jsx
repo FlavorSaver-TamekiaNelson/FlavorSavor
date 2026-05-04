@@ -1,65 +1,39 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { registerUser } from '@/api/userApi';
 
-const API_URL =
-    import.meta.env.VITE_API_URL ||
-    'https://flavorsavor-api-hudbbdgzbpajcwf3.centralus-01.azurewebsites.net'
-    
 function RegisterPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
+    const navigate = useNavigate();
 
     const handleRegister = async (e) => {
         e.preventDefault();
-
         try {
-        const response = await fetch(`${API_URL}/api/users/register`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password })
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-            throw new Error(data.error || 'Registration failed');
-        }
-
+        await registerUser({ email, password });
         setMessage('Registered successfully');
         setEmail('');
         setPassword('');
+        setTimeout(() => navigate('/login'), 800);
         } catch (error) {
-        setMessage(error.message);
+        setMessage(error.response?.data?.error || error.message);
         }
     };
 
     return (
         <div>
         <h1>Register</h1>
-
         {message && <p>{message}</p>}
-
         <form onSubmit={handleRegister}>
             <div>
             <label>Email: </label>
-            <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-            />
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
             </div>
-
             <div>
             <label>Password: </label>
-            <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-            />
+            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
             </div>
-
             <button type="submit">Register</button>
         </form>
         </div>

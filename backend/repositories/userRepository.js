@@ -10,6 +10,11 @@ export const findById = async (id) => {
   return rows[0];
 };
 
+export const findByEmail = async (email) => {
+  const { rows } = await pool.query('SELECT * FROM "user" WHERE email = $1', [email]);
+  return rows[0];
+};
+
 export const create = async ({ email, password_hash }) => {
   const { rows } = await pool.query(
     `INSERT INTO "user" (email, password_hash, created_at)
