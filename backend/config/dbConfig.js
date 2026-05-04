@@ -4,13 +4,15 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
 dotenv.config();
+
+const isProduction = process.env.NODE_ENV === 'production';
 
 export default {
     user: process.env.DB_USER,
     host: process.env.DB_HOST,
     database: process.env.DB_NAME,
     password: process.env.DB_PASSWORD,
-    port: Number(process.env.DB_PORT)
+    port: Number(process.env.DB_PORT),
+    ssl: isProduction ? { rejectUnauthorized: false } : false
 };
