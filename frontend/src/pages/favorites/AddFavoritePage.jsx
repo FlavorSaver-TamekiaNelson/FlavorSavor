@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { addFavorite } from '@/api/favoriteApi'
+import axios from 'axios'
 
-const API = import.meta.env.VITE_API_URL || 'https://flavorsavor-api-hudbbdgzbpajcwf3.centralus-01.azurewebsites.net/api'
+const BASE_URL =
+  import.meta.env.VITE_API_URL ||
+  'https://flavorsavor-api-hudbbdgzbpajcwf3.centralus-01.azurewebsites.net'
 
 export default function AddFavoritePage() {
   const [users, setUsers] = useState([])
@@ -18,8 +22,8 @@ export default function AddFavoritePage() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch(`${API}/users`).then(r => r.json()).then(setUsers)
-    fetch(`${API}/restaurants`).then(r => r.json()).then(setRestaurants)
+    axios.get(`${BASE_URL}/api/users`).then(r => setUsers(r.data))
+    axios.get(`${BASE_URL}/api/restaurants`).then(r => setRestaurants(r.data))
   }, [])
 
   const handleChange = (e) => {
@@ -29,18 +33,12 @@ export default function AddFavoritePage() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const res = await fetch(`${API}/favorites`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...form,
-          user_id: Number(form.user_id),
-          restaurant_id: Number(form.restaurant_id),
-          rating: Number(form.rating)
-        })
+      await addFavorite({
+        ...form,
+        user_id: Number(form.user_id),
+        restaurant_id: Number(form.restaurant_id),
+        rating: Number(form.rating)
       })
-      const data = await res.json()
-      if (!res.ok) throw new Error(data.error)
       setMessage('Favorite created!')
       setForm({
         user_id: '',
@@ -50,11 +48,9 @@ export default function AddFavoritePage() {
         notes: '',
         photo_url: ''
       })
-      setTimeout(() => {
-        navigate('/favorites')
-      }, 800)
+      setTimeout(() => navigate('/favorites'), 800)
     } catch (err) {
-      setMessage(err.message)
+      setMessage(err.response?.data?.error || err.message)
     }
   }
 
