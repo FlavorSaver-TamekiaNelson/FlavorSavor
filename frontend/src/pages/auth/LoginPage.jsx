@@ -14,6 +14,7 @@ function LoginPage() {
         const { data } = await loginUser({ email, password });
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
+        window.dispatchEvent(new Event('storage'));
         setMessage('Login successful');
         setTimeout(() => navigate('/restaurants'), 800);
         } catch (error) {
