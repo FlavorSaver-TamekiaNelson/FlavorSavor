@@ -18,6 +18,7 @@ const app = express();
 app.use(cors({
     origin: [
   'http://localhost:5174',
+  'http://localhost:5173',
   'https://salmon-water-073aac80f.7.azurestaticapps.net'
 ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
